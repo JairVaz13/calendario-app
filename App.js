@@ -1,20 +1,57 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import ButtonScreen from './ButtonScreen'; // Ajusta la ruta si es necesario
+import CalendarScreen from './CalendarScreen'; // Ajusta la ruta si es necesario
+import ScheduleScreen from './ScheduleScreen'; // Ajusta la ruta si es necesario
+import WeekListScreen from './WeekListScreen'; // Ajusta la ruta si es necesario
+import DayDetail from './components/DayDetail'; // Ajusta la ruta si es necesario
+import ObjectivesAndPrioritiesScreen from './ObjectivesAndPrioritiesScreen';
+import noss from './noss';
 
-export default function App() {
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen 
+          name="Home" 
+          component={ButtonScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="Calendar" 
+          component={CalendarScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="Schedule" 
+          component={ScheduleScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="WeekList" 
+          component={WeekListScreen} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen 
+          name="DayDetail" 
+          component={DayDetail} 
+          options={{ headerShown: false }} 
+        />
+        <Stack.Screen name="ObjectivesAndPriorities" component={ObjectivesAndPrioritiesScreen}
+        options={{ headerShown: false }} />
+        <Stack.Screen 
+          name="noss" 
+          component={noss} 
+          options={{ headerShown: false }} 
+        />
+        {/* Agrega otras pantallas si es necesario */}
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
